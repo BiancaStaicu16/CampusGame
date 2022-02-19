@@ -12,9 +12,21 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
+import sys
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# This variable is True when running in a development environment
+DEVELOPMENT = str.lower(os.environ.get("APP_DEVELOPMENT", "False")) == "true"
+
+# This variable is True when running in debug mode
+# By default, we also enable debug in development, but you may wish to change this
+DEBUG = DEVELOPMENT or str.lower(os.environ.get("APP_DEBUG", "False")) == "true"
+
+STAGING = DEBUG and not DEVELOPMENT
+
+TESTING = sys.argv[1:2] == ["test"]
 
 
 # Quick-start development settings - unsuitable for production
@@ -37,7 +49,11 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'rest_framework',
     'django.contrib.staticfiles',
+    'rest_framework.authtoken',
+    'api',
+    'api.users',
 ]
 
 MIDDLEWARE = [
@@ -119,6 +135,23 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATIC_ROOT = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'frontend/build/static')]
+
+# Django Rest Framework.
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.TokenAuthentication",
+    ],
+    "DEFAULT_RENDERER_CLASSES": [
+        "rest_framework.renderers.JSONRenderer",
+    ],
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
+    "PAGE_SIZE": 10,
+}
+
+# Override the default user model.
+
+AUTH_USER_MODEL = "users.User"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
