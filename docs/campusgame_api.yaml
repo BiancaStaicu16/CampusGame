@@ -1,0 +1,270 @@
+openapi: 3.1.0
+info:
+  title: campusgame_api
+  version: '1.0'
+  summary: CampusGame restfull API
+  description: API implemented using django rest framework.
+servers:
+  - url: 'http://127.0.0.1:8000/api'
+paths:
+  /users/login/:
+    post:
+      summary: Login
+      operationId: post-users-login
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                    description: 'Example: "Token 1257fvdxcjndxbcjbbxjmkbx"'
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      description: Login a user with email.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+              required:
+                - email
+                - password
+  /users/logout/:
+    post:
+      summary: Logout
+      operationId: post-users-logout
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+      description: It will loggout a logged in user.
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authorization
+          required: true
+  /users/me/account/request_verification_code/:
+    post:
+      summary: Request account verification code
+      operationId: post-users-me-account-request_verification_code
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+      description: |-
+        Request account verification code.
+        It will delete any old verification code.
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authorization
+          required: true
+  /users/me/account/verify/:
+    post:
+      summary: Account verification
+      operationId: post-users-me-account-verify
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+      description: Verify user account provided that verification code is valid.
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authorization
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                code:
+                  type: string
+              required:
+                - code
+  /users/forgot_password/request_verification_code/:
+    post:
+      summary: Reset password email
+      operationId: post-users-forgot_password-request_verification_code
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '404':
+          description: Not Found
+      description: It will send the reset password email.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+              required:
+                - email
+  /users/forgot_password/verify_code/:
+    post:
+      summary: Verify code
+      operationId: post-users-forgot_password-verify_code
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+      description: |-
+        Checking if verification code for password is valid, but it will not actually use the verification code.
+        Use endpoint "forgot_password/change_password" with the same verification code to change the password.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                code:
+                  type: string
+              required:
+                - code
+  /users/forgot_password/change_password/:
+    post:
+      summary: Change password
+      operationId: post-users-forgot_password-change_password
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+      description: Change password given that verification code is correct.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                code:
+                  type: string
+                password:
+                  type: string
+              required:
+                - code
+                - password
+  /users/me/:
+    get:
+      summary: Get user
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+      operationId: get-users-me
+      description: It will return data of a logged in user.
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authorization
+          required: true
+    patch:
+      summary: Update self
+      operationId: patch-users-me
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      description: It will update details about self.
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authorization
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                phone_number:
+                  type: string
+                name:
+                  type: string
+    delete:
+      summary: Delete user account
+      operationId: delete-users-me
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+      description: |-
+        It will send a request for deleting a user account.
+        It won't actually delete the user.
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authorization
+          required: true
+components:
+  schemas:
+    User:
+      title: User
+      type: object
+      description: ''
+      examples:
+        - id: 142
+          firstName: Alice
+          lastName: Smith
+          email: alice.smith@gmail.com
+          dateOfBirth: '1997-10-31'
+          emailVerified: true
+          signUpDate: '2019-08-24'
+      properties:
+        id:
+          description: Unique identifier for the given user.
+          type: integer
+        name:
+          type: string
+        username:
+          type: string
+        phone_number:
+          type: string
+        email:
+          type: string
+      required:
+        - id
