@@ -17,8 +17,8 @@ def check_code_is_active(verification_code):
     :return: True if active, False if not.
     """
     return not (
-            (timezone.now().timestamp() - verification_code.created_at.timestamp())
-            > 60 * CODE_ACTIVE_MINUTES
+        (timezone.now().timestamp() - verification_code.created_at.timestamp())
+        > 60 * CODE_ACTIVE_MINUTES
     )
 
 
@@ -34,7 +34,7 @@ def generate_code(user, code_type, length):
         letters_and_digits = string.ascii_letters + string.digits
         result_str = "".join((random.choice(letters_and_digits) for _ in range(length)))
         if not VerificationCode.objects.filter(
-                code=result_str
+            code=result_str
         ).exists():  # In case code already exists.
             VerificationCode.objects.create(
                 user=user,

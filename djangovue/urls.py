@@ -16,12 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from djangovue import views
+
 vue_urls = [
-  path('', views.frontend),
-  path('another-path/', views.frontend),
+    path("", views.frontend),
+    path("another-path/", views.frontend),
 ]
 urlpatterns = [
-  path('admin/', admin.site.urls),
-  path("api/", include("api.urls")),
-  path('', include(vue_urls)),
+    path("admin/", admin.site.urls),
+    path("api/", include("api.urls")),
+    path("", include(vue_urls)),
 ]

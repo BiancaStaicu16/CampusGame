@@ -12,7 +12,6 @@ from api.users.email_manager import (
     verify_code,
     email_password_reset,
     check_code_is_valid,
-
 )
 from api.users.models import User, VerificationCode
 from api.users.serializers import (

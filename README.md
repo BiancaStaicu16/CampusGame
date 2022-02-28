@@ -34,7 +34,7 @@ Then activate it with:
 
 Install python dependencies:
 ```
-pip install -r requirements.txt
+pip install -r requirements-base.txt
 ```
 
 Do your migrations (create your development database):
