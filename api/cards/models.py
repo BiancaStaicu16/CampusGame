@@ -1,3 +1,4 @@
+from django.contrib.auth.base_user import BaseUserManager
 from django.db import models
 from api.models import TimestampedModel
 
@@ -10,7 +11,7 @@ class Card(TimestampedModel):
         return "Card {}".format(self.title)
 
 class CustomCardManager(BaseUserManager):
-    def create_user(self, title, value, **extra_fields):
+    def create_card(self, title, value, **extra_fields):
         """
         Create and save a Card with the given value and
         location name.
@@ -20,6 +21,19 @@ class CustomCardManager(BaseUserManager):
         card.save()
         return card
 
+    def deal_card(self):
+        """When a QR code is scanned, a card will
+        be dealt"""
+         #TODO
+
+    def view_card(self):
+        """Card will appear on screen according to
+        the QR code that was scanned"""
+        #TODO
+
+    def delete_card(self):
+        """Deletes a card"""
+        #TODO
 
 
 class CardName(TimestampedModel):

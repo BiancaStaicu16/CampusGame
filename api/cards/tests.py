@@ -12,7 +12,7 @@ class CardTests(APITestCase):
         response = self.client.post(
             self.url,
             {
-                "title": "Swiop",
+                "title": "SWIOT",
                 "value": "100",
                 "picture": "",
             },
@@ -21,7 +21,7 @@ class CardTests(APITestCase):
         self.assertTrue("Token" in response.data["token"])
 
 
-def test_CardName(self):
+def test_CardName(self)
     response = self.client.post(
         self.url,
         {
