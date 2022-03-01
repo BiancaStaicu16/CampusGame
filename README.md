@@ -11,11 +11,10 @@ Campus Game (ToBeContinued)
 
 **NOTE:** Send Apurva your trello account name and google email to add you to it.
 
-[Trello board for tasks]()
+[Trello board for tasks](https://trello.com/b/jl8CAvTH/kanban-board-group-software-dev)
 
-[Shared Google drive]()
+[Shared Google drive](https://drive.google.com/drive/folders/18fkR52ZooqxcOuMDD-h8JmS94_OvELeL)
 
-[Discord server]()
 
 ## 🛠️ Setup
 
