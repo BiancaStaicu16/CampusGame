@@ -5,7 +5,20 @@
 
 ## 📖 About
 
-Campus Game (ToBeContinued)
+Campus Game 
+
+ECM2434 Group 23 Software Engineering Project
+
+Campus Game is a platform that offers students the opportunity to discover and interact with new people around the campus of University of Exeter. Play the game and scan the QR codes when you arrive at a location. Get involved and receive cads and points which go towards you final score. Team up with your friends and play it as a team.
+
+Some feature of the Campus Game offer:
+
+1) Ability to freely register and login.
+2) Ability to scan the QR code when arriving at a location on campus.
+3) Ability to earn card when scanning the QR codes.
+4) Ability to interact with other people by playing the game together.
+5) Ability to discover the campus while playing the game.
+
 
 ## 🤝 Workspaces
 
