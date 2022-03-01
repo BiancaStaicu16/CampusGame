@@ -1,6 +1,5 @@
 from rest_framework.test import APITestCase
 
-from api.test_utils import test_cards
 from api.cards.models import Card
 
 class CardTests(APITestCase):

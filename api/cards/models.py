@@ -1,11 +1,14 @@
 from django.contrib.auth.base_user import BaseUserManager
 from django.db import models
 from api.models import TimestampedModel
+from api.users.models import User
 
 class Card(TimestampedModel):
     title = models.CharField(max_length=255, unique=True)
     value = models.DecimalField(max_digits=19, decimal_places=2)
     picture = models.FileField(null=True, blank=True)
+    # Representing the One-to-Many relationship between users and cards
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return "Card {}".format(self.title)
@@ -35,9 +38,6 @@ class CustomCardManager(BaseUserManager):
         """Deletes a card"""
         #TODO
 
-
-class CardName(TimestampedModel):
-    card = models.ForeignKey("cards.Card", on_delete=models.CASCADE)
 
 
 
