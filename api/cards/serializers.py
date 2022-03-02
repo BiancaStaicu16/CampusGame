@@ -6,14 +6,3 @@ class CardGetSerializer(serializers.ModelSerializer):
     class Meta:
         model = Card
         fields = "__all__"
-
-
-class CardPostSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Card
-        read_only_fields = ["title", "value", "picture"]
-        fields = [
-            "title",
-            "value",
-            "picture",
-        ]

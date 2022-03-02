@@ -3,6 +3,7 @@ from rest_framework.test import APITestCase
 from api.test_utils import test_user
 from api.users.models import VerificationCode, User
 
+
 class UserTests(APITestCase):
     def setUp(self) -> None:
         self.url = "/api/users/"

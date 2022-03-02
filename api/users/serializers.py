@@ -22,6 +22,7 @@ class UserPostSerializer(serializers.ModelSerializer):
             "username",
             "email",
             "name",
+            "card",
             "phone_number",
             "password",
             "is_verified",
@@ -49,6 +50,7 @@ class UserPostSerializer(serializers.ModelSerializer):
         instance.phone_number = validated_data.get(
             "phone_number", instance.phone_number
         )
+        instance.card = validated_data.get("card", instance.card)
 
         username = validated_data.get("username")
         if username is not None:

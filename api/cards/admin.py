@@ -7,16 +7,13 @@ class CardAdmin(admin.ModelAdmin):
     list_display = [
         "title",
         "value",
-        "picture"
+        "picture",
     ]
     fields = [
         "title",
         "value",
         "picture",
     ]
-
-    def has_add_permission(self, request, obj=None):
-        return False
 
 
 admin.site.register(Card, CardAdmin)

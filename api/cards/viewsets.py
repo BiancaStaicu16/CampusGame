@@ -1,10 +1,6 @@
 from rest_framework import viewsets
-from rest_framework.response import Response
 from api.cards.models import Card
-from api.cards.serializers import CardPostSerializer
-from rest_framework.decorators import action
-
-from api.users.utils import get_token_response
+from api.cards.serializers import CardGetSerializer
 
 
 class CardViewSet(viewsets.ModelViewSet):
@@ -13,17 +9,17 @@ class CardViewSet(viewsets.ModelViewSet):
     Route: /cards/
     """
 
-    @action(
-        detail=False,
-        methods=["GET"],
-        url_path="display_card",
-    )
-    def display_card(self):
-        """
-        Listing all fields from a card
-        """
-        if self.action == "retrieve":
-            return CardPostSerializer
+    def get_serializer_class(self):
+        if self.action == "list":
+            return CardGetSerializer
 
+    def get_queryset(self):
+        queryset = Card.objects.all()
 
+        # Filter cards by title.
+        title = self.request.GET.get("title")
+        if title is not None:
+            for term in title.split():
+                queryset = queryset.filter(title__icontains=term)
 
+        return queryset

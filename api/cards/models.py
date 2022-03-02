@@ -8,4 +8,4 @@ class Card(TimestampedModel):
     picture = models.FileField(null=True, blank=True)
 
     def __str__(self):
-        return "Card {}".format(self.title)
+        return "Card {}-{}".format(self.title, self.value)
