@@ -22,7 +22,7 @@ class UserPostSerializer(serializers.ModelSerializer):
             "username",
             "email",
             "name",
-            "card",
+            "cards",
             "phone_number",
             "password",
             "is_verified",
