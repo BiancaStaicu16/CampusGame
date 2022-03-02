@@ -268,3 +268,17 @@ components:
           type: string
       required:
         - id
+    Card:
+      title: Card
+      type: object
+      description: Cards are distributed among users
+      properties:
+        title:
+          type: string
+        value:
+          type: integer
+        picture:
+          type: object
+      required:
+        - title
+        - value
