@@ -4,11 +4,6 @@
      <qrcode-stream id="qrscan" @decode="onDecode" @init="onInit"></qrcode-stream>
    <div class="login-page">
 
-      <transition name="fade">
-         <div v-if="!registerActive" class="wallpaper-login"></div>
-      </transition>
-      <div class="wallpaper-register"></div>
-
       <div class="container">
          <div class="row">
             <div class="col-lg-4 col-md-6 col-sm-8 mx-auto">
@@ -82,7 +77,6 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
-
 }
 
 #qrscan {
