@@ -42,6 +42,7 @@ Then activate it with:
 ```
 .venv\Scripts\activate.bat      # Windows
 .venv\bin\activate              # Linux
+source <venv> bin/activate      # MacOS
 ```
 
 Install python dependencies:
