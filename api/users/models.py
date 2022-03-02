@@ -3,6 +3,7 @@ from django.contrib.auth.models import PermissionsMixin
 from django.db import models
 
 from api.models import TimestampedModel
+from api.cards.models import Card
 
 
 class CustomUserManager(BaseUserManager):
@@ -42,6 +43,7 @@ class User(TimestampedModel, AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=255, unique=True, null=True, blank=True)
     name = models.CharField(max_length=255, null=True, blank=True)
     phone_number = models.CharField(max_length=255, unique=True, null=True, blank=True)
+    card = models.ForeignKey("cards.Card", null=True, blank=True, on_delete=models.SET_NULL)
 
     # Permissions fields.
     is_verified = models.BooleanField(default=False)
