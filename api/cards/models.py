@@ -3,6 +3,7 @@ from django.db import models
 from api.models import TimestampedModel
 from api.users.models import User
 
+
 class Card(TimestampedModel):
     title = models.CharField(max_length=255, unique=True)
     value = models.DecimalField(max_digits=19, decimal_places=2)
@@ -12,6 +13,7 @@ class Card(TimestampedModel):
 
     def __str__(self):
         return "Card {}".format(self.title)
+
 
 class CustomCardManager(BaseUserManager):
     def create_card(self, title, value, **extra_fields):

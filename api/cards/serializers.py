@@ -8,7 +8,7 @@ class CardGetSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class UserPostSerializer(serializers.ModelSerializer):
+class CardPostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Card
         read_only_fields = ["title", "value", "picture"]

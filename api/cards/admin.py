@@ -4,10 +4,10 @@ from api.cards.models import Card
 
 class CardAdmin(admin.ModelAdmin):
     search_fields = ["title"]
-    list_filter = ["created_at"]
     list_display = [
-        "id",
-        "created_at",
+        "title",
+        "value",
+        "picture"
     ]
     fields = [
         "title",
