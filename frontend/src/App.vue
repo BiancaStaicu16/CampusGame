@@ -26,13 +26,13 @@
                   </form>
                </div>
 
-               <div v-else class="card register" v-bind:class="{ error: emptyFields }">
+               <div v-if="!registerActive" class="card login" v-bind:class="{ error: emptyFields }">
                   <h1>Sign Up</h1>
                   <form class="form-group">
                      <input v-model="emailReg" type="email" class="form-control" placeholder="Email" required>
-                     <input v-model="passwordReg" type="password" class="form-control" placeholder="Password" required>
-                     <input v-model="confirmReg" type="password" class="form-control" placeholder="Confirm Password" required>
-                     <input type="submit" class="btn btn-primary" @click="doRegister">
+                     <br><br><input v-model="passwordReg" type="password" class="form-control" placeholder="Password" required>
+                     <br><br><input v-model="confirmReg" type="password" class="form-control" placeholder="Confirm Password" required>
+                     <br><br><input type="submit" class="btn btn-primary" @click="doRegister">
                      <p>Already have an account? <a href="#" @click="registerActive = !registerActive, emptyFields = false">Sign in here</a>
                      </p>
                   </form>
@@ -59,13 +59,13 @@ import Login from './components/Login.vue'
 export default {
   name: 'App',
   components: {
-    Login 
+    Login
   },
   methods: {
-    onDecode(url) {
+    onDecode (url) {
       window.location.href = url
     },
-    onInit(promise) {
+    onInit (promise) {
       promise
         .then(console.log)
         .catch(console.error)
