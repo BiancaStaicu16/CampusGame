@@ -3,6 +3,10 @@ from api.cards.models import Card
 
 
 class CardAdmin(admin.ModelAdmin):
+    """
+    Different fields in the model and some
+    of their properties
+    """
     search_fields = ["title"]
     list_display = [
         "title",

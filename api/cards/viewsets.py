@@ -14,6 +14,10 @@ class CardViewSet(viewsets.ModelViewSet):
             return CardGetSerializer
 
     def get_queryset(self):
+        """
+        Used to query card records from the database;
+        able to filter by title.
+        """
         queryset = Card.objects.all()
 
         # Filter cards by title.
