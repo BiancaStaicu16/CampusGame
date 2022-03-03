@@ -10,7 +10,7 @@
          <div class="row">
             <div class="col-lg-4 col-md-6 col-sm-8 mx-auto">
                <div v-if="!registerActive" class="card login" v-bind:class="{ error: emptyFields }">
-                  <h1>ExeCard</h1>
+                  <h1>ExeTour</h1>
                   <form class="form-group">
                      <input v-model="emailLogin" type="email" class="form-control" placeholder="Email" required>
                      <br><br><input v-model="passwordLogin" type="password" class="form-control" placeholder="Password" required>
@@ -110,7 +110,7 @@ input.form-control, .btn {
 
 .btn {
   width: 10%;
-  font-weight: bolder; 
+  font-weight: bolder;
 
 }
 
