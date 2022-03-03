@@ -69,6 +69,11 @@ npm install
 **NOTE:** When you pull changes that others have made, you may want to do 
 `npm install` again to ensure any additional dependencies have been added.
 
+Next, install the Google Maps API Dependency 
+```
+npm install --save vue-geolocation-api
+```
+
 Now to build the frontend, there are two ways:
 
 Watches for any changes in the filetree and recompiles when detects a change:
