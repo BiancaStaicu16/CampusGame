@@ -1,6 +1,6 @@
 from rest_framework import viewsets
 from api.cards.models import Card
-from api.cards.serializers import CardGetSerializer
+from api.cards.serializers import CardSerializer
 
 
 class CardViewSet(viewsets.ModelViewSet):
@@ -11,7 +11,7 @@ class CardViewSet(viewsets.ModelViewSet):
 
     def get_serializer_class(self):
         if self.action == "list":
-            return CardGetSerializer
+            return CardSerializer
 
     def get_queryset(self):
         """

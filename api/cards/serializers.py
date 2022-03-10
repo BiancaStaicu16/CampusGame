@@ -2,10 +2,15 @@ from rest_framework import serializers
 from api.cards.models import Card
 
 
-class CardGetSerializer(serializers.ModelSerializer):
+class CardSerializer(serializers.ModelSerializer):
     """
     Converts all fields in the Card model to json data
     """
+
     class Meta:
         model = Card
-        fields = "__all__"
+        read_only_fields = ["id"]
+        fields = [
+            "id",
+            "title",
+        ]
