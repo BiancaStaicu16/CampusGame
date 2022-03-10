@@ -5,7 +5,7 @@ from typing import List, Optional
 
 def test_user(
     username="marc",
-    email="marc@example.com",
+    email="marc@exeter.ac.uk",
     name="Marc",
     cards: Optional[List[Card]] = None,
 ):

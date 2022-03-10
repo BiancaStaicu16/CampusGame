@@ -17,7 +17,7 @@ class UserTests(APITestCase):
             self.url,
             {
                 "username": "maria",
-                "email": "maria@example.com",
+                "email": "maria@exeter.ac.uk",
                 "name": "Maria",
                 "password": "Orange1!",
             },
@@ -29,7 +29,7 @@ class UserTests(APITestCase):
         response = self.client.post(
             self.url + "login/",
             {
-                "username": "maria@example.com",
+                "username": "maria@exeter.ac.uk",
                 "password": "Orange1!",
             },
         )
@@ -39,7 +39,7 @@ class UserTests(APITestCase):
         response = self.client.post(
             self.url,
             {
-                "email": "maria@example.com",
+                "email": "maria@exeter.ac.uk",
                 "name": "Maria",
                 "password": "Orange1!",
             },
@@ -63,7 +63,7 @@ class UserTests(APITestCase):
             self.url,
             {
                 "username": "maria",
-                "email": "maria@example.com",
+                "email": "maria@exeter.ac.uk",
                 "password": "Orange1!",
             },
         )
