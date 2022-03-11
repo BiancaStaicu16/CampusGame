@@ -15,8 +15,8 @@ class CardViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         """
-        Used to query card records from the database;
-        able to filter by title.
+        Used to query card records from the
+        database and filters records by title.
         """
         queryset = Card.objects.all()
 
