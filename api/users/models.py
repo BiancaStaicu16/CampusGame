@@ -1,7 +1,6 @@
 from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
 from django.contrib.auth.models import PermissionsMixin
 from django.db import models
-from rest_framework.exceptions import ValidationError
 
 from api.models import TimestampedModel
 
@@ -43,7 +42,6 @@ class User(TimestampedModel, AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=255, unique=True, null=True, blank=True)
     name = models.CharField(max_length=255, null=True, blank=True)
     phone_number = models.CharField(max_length=255, unique=True, null=True, blank=True)
-    cards = models.ManyToManyField("cards.Card", blank=True)
 
     # Permissions fields.
     is_verified = models.BooleanField(default=False)
@@ -53,12 +51,6 @@ class User(TimestampedModel, AbstractBaseUser, PermissionsMixin):
 
     objects = CustomUserManager()
     USERNAME_FIELD = "email"
-
-    def save(self, *args, **kwargs):
-        domain = self.email.split("@")[1]
-        if domain != "exeter.ac.uk":
-            raise ValidationError("Email must be in format @exeter.ac.uk.")
-        super(User, self).save(*args, **kwargs)
 
     def __str__(self):
         return "User {}".format(self.id)

@@ -1,6 +1,6 @@
 from rest_framework.test import APITestCase
 
-from api.test_utils import test_user, test_cards
+from api.test_utils import test_user
 from api.users.models import VerificationCode, User
 
 
@@ -8,16 +8,13 @@ class UserTests(APITestCase):
     def setUp(self) -> None:
         self.url = "/api/users/"
         self.user = test_user()
-        self.card = test_cards()
-        self.card_1 = test_cards(title="Amory", value=50)
-        self.card_2 = test_cards(title="Library", value=20)
 
     def test_create_user(self):
         response = self.client.post(
             self.url,
             {
                 "username": "maria",
-                "email": "maria@exeter.ac.uk",
+                "email": "maria@example.com",
                 "name": "Maria",
                 "password": "Orange1!",
             },
@@ -29,7 +26,7 @@ class UserTests(APITestCase):
         response = self.client.post(
             self.url + "login/",
             {
-                "username": "maria@exeter.ac.uk",
+                "username": "maria@example.com",
                 "password": "Orange1!",
             },
         )
@@ -39,7 +36,7 @@ class UserTests(APITestCase):
         response = self.client.post(
             self.url,
             {
-                "email": "maria@exeter.ac.uk",
+                "email": "maria@example.com",
                 "name": "Maria",
                 "password": "Orange1!",
             },
@@ -63,7 +60,7 @@ class UserTests(APITestCase):
             self.url,
             {
                 "username": "maria",
-                "email": "maria@exeter.ac.uk",
+                "email": "maria@example.com",
                 "password": "Orange1!",
             },
         )
@@ -118,24 +115,6 @@ class UserTests(APITestCase):
                 "password": "C00lPa55",
             },
         )
-        self.assertEqual(response.status_code, 200)
-
-    def test_update_user_cards(self):
-        self.client.force_authenticate(self.user)
-        response = self.client.patch(self.url + "me/", {"cards": [self.card.id]})
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(User.objects.get(id=self.user.id).cards.count(), 1)
-
-        response = self.client.patch(
-            self.url + "me/",
-            {
-                "cards": [
-                    self.card_1.id,
-                    self.card_2.id,
-                ]
-            },
-        )
-        self.assertEqual(User.objects.get(id=self.user.id).cards.count(), 2)
         self.assertEqual(response.status_code, 200)
 
     def test_user_already_verified(self):
@@ -219,12 +198,6 @@ class UserTests(APITestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.data["id"], self.user.id)
         self.assertEqual(response.data["password"], self.user.password)
-
-        # Test user has card added.
-        self.assertEqual(
-            response.data["cards"][0]["id"],
-            self.user.cards.first().id,
-        )
 
     def test_soft_delete_user(self):
         response = self.client.post(

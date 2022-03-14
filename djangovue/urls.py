@@ -27,3 +27,4 @@ urlpatterns = [
     path("api/", include("api.urls")),
     path("", include(vue_urls)),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

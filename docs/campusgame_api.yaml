@@ -192,6 +192,14 @@ paths:
           in: header
           name: Authorization
           required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                cards:
+                  type: object
     patch:
       summary: Update self
       operationId: patch-users-me
@@ -244,7 +252,6 @@ components:
   schemas:
     User:
       title: User
-      type: object
       description: ''
       examples:
         - id: 142
@@ -254,20 +261,18 @@ components:
           dateOfBirth: '1997-10-31'
           emailVerified: true
           signUpDate: '2019-08-24'
+      type: object
       properties:
-        id:
-          description: Unique identifier for the given user.
-          type: integer
-        name:
+        email:
           type: string
         username:
           type: string
+        name:
+          type: string
         phone_number:
           type: string
-        email:
-          type: string
-      required:
-        - id
+        cards:
+          type: object
     Card:
       title: Card
       type: object

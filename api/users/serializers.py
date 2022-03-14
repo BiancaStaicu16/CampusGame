@@ -4,13 +4,10 @@ from django.contrib.auth.hashers import make_password
 from rest_framework.exceptions import ValidationError as DRFValidationError
 from rest_framework import serializers
 
-from api.cards.serializers import CardSerializer
 from api.users.models import User
 
 
 class UserGetSerializer(serializers.ModelSerializer):
-    cards = CardSerializer(required=False, many=True)
-
     class Meta:
         model = User
         fields = "__all__"
@@ -25,7 +22,6 @@ class UserPostSerializer(serializers.ModelSerializer):
             "username",
             "email",
             "name",
-            "cards",
             "phone_number",
             "password",
             "is_verified",
@@ -53,9 +49,6 @@ class UserPostSerializer(serializers.ModelSerializer):
         instance.phone_number = validated_data.get(
             "phone_number", instance.phone_number
         )
-        cards = validated_data.get("cards")
-        if cards is not None:
-            instance.cards.set(cards)
 
         username = validated_data.get("username")
         if username is not None:
