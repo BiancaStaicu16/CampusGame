@@ -1,3 +1,4 @@
+openapi: 3.1.0
 info:
   title: campusgame_api
   version: '1.0'
@@ -181,6 +182,10 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
         '401':
           description: Unauthorized
       operationId: get-users-me
@@ -222,6 +227,8 @@ paths:
                   type: string
                 name:
                   type: string
+                cards:
+                  type: integer
     delete:
       summary: Delete user account
       operationId: delete-users-me
@@ -239,6 +246,46 @@ paths:
           in: header
           name: Authorization
           required: true
+  /users/:
+    post:
+      summary: Sign up
+      operationId: post-users
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+        '400':
+          description: Bad Request
+        '404':
+          description: Not Found
+      description: Sign up a new user.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                username:
+                  type: string
+                name:
+                  type: string
+                phone_number:
+                  type: string
+                password:
+                  type: string
+                cards:
+                  $ref: '#/components/schemas/Cards'
+              required:
+                - email
+                - password
 components:
   schemas:
     User:
@@ -265,19 +312,19 @@ components:
           type: string
         email:
           type: string
+        cards:
+          $ref: '#/components/schemas/Cards'
       required:
         - id
-    Card:
-      title: Card
+    Cards:
+      title: Cards
       type: object
-      description: Cards are distributed among users
       properties:
+        id:
+          type: string
         title:
           type: string
         value:
           type: integer
         picture:
           type: object
-      required:
-        - title
-        - value
