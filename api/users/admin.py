@@ -11,6 +11,11 @@ class UserAdmin(admin.ModelAdmin):
     ]
     fields = [
         "id",
+        "name",
+        "username",
+        "phone_number",
+        "email",
+        "cards",
         "is_verified",
         "is_staff",
         "is_superuser",

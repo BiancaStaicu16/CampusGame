@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     "rest_framework.authtoken",
     "api",
     "api.users",
+    "api.cards",
 ]
 
 MIDDLEWARE = [
@@ -135,6 +136,11 @@ USE_TZ = True
 STATIC_URL = "static/"
 STATIC_ROOT = "static/"
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "frontend/build/static")]
+
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "media").replace("\\", "/")
+MEDIA_URL = "/media/"
+
 
 # Django Rest Framework.
 
