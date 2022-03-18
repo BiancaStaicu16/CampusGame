@@ -1,8 +1,6 @@
-# models.py
-
 from django.db import models
 from api.users.models import User
-# from api.cards.models import Card
+from api.cards.models import Card
 
 
 class GameMode(models.Model):
@@ -11,7 +9,7 @@ class GameMode(models.Model):
     """
 
     users = models.ManyToManyField(User, on_delete=models.CASCADE)
-    # cards = models.ManyToManyField(Card, auto_now=True)
+    cards = models.ManyToManyField(Card, auto_now=True)
 
     class Meta:
         abstract = True

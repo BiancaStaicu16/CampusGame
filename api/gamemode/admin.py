@@ -1,7 +1,5 @@
-#admin.py
-
 from django.contrib import admin
-from api.gameMode.models import GameMode
+from api.gamemode.models import GameMode
 
 
 class GameModeAdmin(admin.ModelAdmin):
@@ -9,11 +7,13 @@ class GameModeAdmin(admin.ModelAdmin):
     list_filter = ["created_at"]
     list_display = [
         "users",
+        "cards"
     ]
     fields = [
         "users",
+        "cards",
     ]
-    readonly_fields = ["users"]
+    readonly_fields = ["users", "cards"]
 
     def has_add_permission(self, request, obj=None):
         return False
