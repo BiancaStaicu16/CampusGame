@@ -1,4 +1,3 @@
-from rest_framework import viewsets
 from rest_framework.decorators import action
 
 from api import users
@@ -37,9 +36,10 @@ class GameModeViewSet(viewsets.ModelViewSet):
 
     # Collect card
     def collect_card(self, request, pk=None):
-        # Check if card has been scanned within the last 24 hours
+        # Check if card has been scanned within the last 24 hours (todo)
         user = users.objects.get(pk=pk)
-        UserPostSerializer(user).update()
+        requested_user = UserPostSerializer(user)
+        # call method to add card to user's hand?
 
     # Get hand total
     @action(detail=False, methods=["GET"], url_path="hand-total")
