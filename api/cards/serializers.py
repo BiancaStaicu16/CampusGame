@@ -10,4 +10,5 @@ class CardSerializer(serializers.ModelSerializer):
         fields = [
             "id",
             "title",
+            "value",
         ]

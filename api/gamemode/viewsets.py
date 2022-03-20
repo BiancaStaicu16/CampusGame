@@ -1,10 +1,13 @@
 from rest_framework import viewsets
-from api.gamemode.models import GameMode
-from api.gamemode.serializers import GameModeGetSerializer, GameModePostSerializer
+from rest_framework.decorators import action
+
+from api import users
+from api.gamemode.serializers import GameModeCardSerializer
 
 from rest_framework import viewsets
 from api.cards.models import Card
 from api.cards.serializers import CardSerializer
+from api.users.serializers import UserPostSerializer
 
 
 class GameModeViewSet(viewsets.ModelViewSet):
@@ -32,14 +35,23 @@ class GameModeViewSet(viewsets.ModelViewSet):
 
         return queryset
 
-# Collect card
+    # Collect card
+    def collect_card(self, request, pk=None):
+        # Check if card has been scanned within the last 24 hours
+        user = users.objects.get(pk=pk)
+        UserPostSerializer(user).update()
 
-# Swap card
+    # Get hand total
+    @action(detail=False, methods=["GET"], url_path="hand-total")
+    def get_hand_total(self, request, pk=None):
+        hand_total = 0
 
-# Steal card
+        # Collecting users with the given user id
+        requested_user = users.objects.get(pk=pk)
+        cards = requested_user.GET.get('cards')
+        for card in cards:
+            serializer = GameModeCardSerializer(card)
+            hand_total += serializer.get('value')
+        return hand_total
 
-# View hand
-
-# Play card
-
-# Display hand total
+    # Get top 10 users

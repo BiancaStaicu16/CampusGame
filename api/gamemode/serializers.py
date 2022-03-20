@@ -2,6 +2,8 @@
 
 from rest_framework import serializers
 
+from api import cards
+from api.cards.serializers import CardSerializer
 from api.gamemode.models import GameMode
 
 
@@ -11,12 +13,9 @@ class GameModeGetSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class GameModePostSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = GameMode
-        read_only_fields = ["users", "cards"]
-        fields = [
-            "users",
-            "cards"
-        ]
+class GameModeCardSerializer(serializers.ModelSerializer):
+    cards = CardSerializer(many=True, read_only=True, required=False)
 
+    class Meta:
+        model = cards
+        fields = '__all__'
