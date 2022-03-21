@@ -27,7 +27,7 @@ class UserCardViewSet(viewsets.ModelViewSet):
         """
         # TODO: Extract id of the requested card
         requested_user = request.user
-        cards_id = 7
+        cards_id = 1
         # Error handling for the card id parsed in.
         try:
             card = Card.objects.get(card_id=cards_id)

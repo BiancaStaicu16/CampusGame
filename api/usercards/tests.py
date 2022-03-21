@@ -2,7 +2,7 @@ from rest_framework.test import APITestCase
 from api.test_utils import test_user, test_cards
 
 
-class CardTests(APITestCase):
+class UserCardTests(APITestCase):
     def setUp(self) -> None:
         self.url = "/api/users_cards/"
 
@@ -20,7 +20,6 @@ class CardTests(APITestCase):
             {
                 "user": self.user,
                 "card": self.card,
-                "cards_id": 1,
             },
         )
         self.assertEqual(response.status_code, 200)
