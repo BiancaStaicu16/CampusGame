@@ -4,7 +4,7 @@ from api.test_utils import test_user, test_cards
 
 class UserCardTests(APITestCase):
     def setUp(self) -> None:
-        self.url = "/api/users_cards/"
+        self.url = "/api/usercards/"
 
         # Need user objects
         self.user = test_user()
@@ -16,7 +16,7 @@ class UserCardTests(APITestCase):
 
     def test_scan_card(self):
         response = self.client.post(
-            self.url,
+            self.url + "users_cards",
             {
                 "user": self.user,
                 "card": self.card,

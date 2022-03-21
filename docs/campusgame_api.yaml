@@ -286,6 +286,27 @@ paths:
               required:
                 - email
                 - password
+  /users/leaderboard/:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+      operationId: get-users-leaderboard
+      description: Gets top 10 players with the highest scores
+  /usercards/users_cards/:
+    post:
+      summary: ''
+      operationId: post-usercards-users_cards
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '404':
+          description: Not Found
+      description: 'Once a QR code has been scanned, the corresponding card is added to the users hand'
 components:
   schemas:
     User:
@@ -328,3 +349,13 @@ components:
           type: integer
         picture:
           type: object
+    Usercards:
+      title: Usercards
+      type: object
+      properties:
+        id:
+          type: string
+        user:
+          $ref: '#/components/schemas/User'
+        card:
+          $ref: '#/components/schemas/Cards'
