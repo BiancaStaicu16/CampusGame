@@ -44,3 +44,4 @@ def test_cards(title: str = "Harrison", value: int = 100) -> Card:
         value=value,
     )
     return card
+

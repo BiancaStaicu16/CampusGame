@@ -7,10 +7,23 @@ from api.users.models import VerificationCode, User
 class UserTests(APITestCase):
     def setUp(self) -> None:
         self.url = "/api/users/"
-        self.user = test_user()
         self.card = test_cards()
         self.card_1 = test_cards(title="Amory", value=50)
         self.card_2 = test_cards(title="Library", value=20)
+        self.card_3 = test_cards(title="Sports Centre", value=150)
+        self.user = test_user()
+        self.user = test_user(
+            username="Bob",
+            email="bob@exeter.ac.uk",
+            name="Bob",
+            cards=[self.card_1, self.card_2, self.card_3]
+        )
+        self.user = test_user(
+            username="Betty",
+            email="betty@exeter.ac.uk",
+            name="Betty",
+            cards=[self.card_3, self.card_2]
+        )
 
     def test_create_user(self):
         response = self.client.post(
@@ -252,3 +265,7 @@ class UserTests(APITestCase):
         response = self.client.delete(self.url + "me/", {"delete_data": True})
         self.assertEqual(response.status_code, 200)
         self.assertFalse(User.objects.filter(id=self.user.id).exists())
+
+    def test_leaderboard(self):
+        response = self.client.post(self.url + "leaderboard/")
+        self.assertEqual(response.status_code, 200)
