@@ -74,6 +74,11 @@ Next, install the Google Maps API Dependency
 npm install --save vue-geolocation-api
 ```
 
+Next, install the QR Code Dependency 
+```
+npm install vue3-qrcode-reader
+```
+
 Now to build the frontend, there are two ways:
 
 Watches for any changes in the filetree and recompiles when detects a change:
