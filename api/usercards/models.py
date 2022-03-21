@@ -12,8 +12,5 @@ class UserCard(TimestampedModel):
     )
     card = models.ForeignKey(Card, on_delete=models.CASCADE, related_name="card")
 
-   # class Meta:
-    #    abstract = False
-
     def __str__(self):
         return "User Cards {}".format(self.id)
