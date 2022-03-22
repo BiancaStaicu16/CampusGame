@@ -44,6 +44,7 @@ class User(TimestampedModel, AbstractBaseUser, PermissionsMixin):
     name = models.CharField(max_length=255, null=True, blank=True)
     phone_number = models.CharField(max_length=255, unique=True, null=True, blank=True)
     cards = models.ManyToManyField("cards.Card", blank=True)
+    score = models.IntegerField(default=0, null=True, blank=True)
 
     # Permissions fields.
     is_verified = models.BooleanField(default=False)

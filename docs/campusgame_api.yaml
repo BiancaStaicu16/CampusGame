@@ -286,6 +286,57 @@ paths:
               required:
                 - email
                 - password
+  /users/leaderboard/:
+    get:
+      summary: Get the 10 players with the highest scores
+      tags: []
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+      operationId: get-users-leaderboard
+      description: It will return the 10 players with the highest scores.
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authorization
+          required: true
+  /usercards/users_cards/:
+    post:
+      summary: Post/Update a user's score
+      operationId: post-usercards-users_cards
+      responses:
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      description: It will update a user's score with the value of a card.
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authorization
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  $ref: '#/components/schemas/User'
+                card:
+                  type: integer
+                  description: Id of a card.
+              required:
+                - user
+                - card
 components:
   schemas:
     User:
@@ -314,10 +365,12 @@ components:
           type: string
         cards:
           $ref: '#/components/schemas/Cards'
+        score:
+          type: integer
       required:
         - id
     Cards:
-      title: Cards
+      title: Card
       type: object
       properties:
         id:
@@ -328,3 +381,13 @@ components:
           type: integer
         picture:
           type: object
+    UserCard:
+      title: UserCard
+      type: object
+      properties:
+        id:
+          type: string
+        user:
+          $ref: '#/components/schemas/User'
+        card:
+          $ref: '#/components/schemas/Cards'
