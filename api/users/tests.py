@@ -12,17 +12,17 @@ class UserTests(APITestCase):
         self.card_2 = test_cards(title="Library", value=20)
         self.card_3 = test_cards(title="Sports Centre", value=150)
         self.user = test_user()
-        self.user = test_user(
+        self.user1 = test_user(
             username="Bob",
             email="bob@exeter.ac.uk",
             name="Bob",
-            cards=[self.card_1, self.card_2, self.card_3]
+            cards=[self.card_1, self.card_2, self.card_3],
         )
-        self.user = test_user(
+        self.user2 = test_user(
             username="Betty",
             email="betty@exeter.ac.uk",
             name="Betty",
-            cards=[self.card_3, self.card_2]
+            cards=[self.card_3, self.card_2],
         )
 
     def test_create_user(self):
@@ -267,5 +267,5 @@ class UserTests(APITestCase):
         self.assertFalse(User.objects.filter(id=self.user.id).exists())
 
     def test_leaderboard(self):
-        response = self.client.post(self.url + "leaderboard/")
+        response = self.client.get(self.url + "leaderboard/")
         self.assertEqual(response.status_code, 200)

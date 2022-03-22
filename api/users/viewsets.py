@@ -208,7 +208,7 @@ class UserViewSet(viewsets.ModelViewSet):
         return Response({"detail": "Password changed."}, status=200)
 
     @action(detail=False, methods=["GET"], url_path="leaderboard")
-    def leaderboard(self):
+    def leaderboard(self, request):
         """
         The 10 users with the highest scores in the game.
         """
