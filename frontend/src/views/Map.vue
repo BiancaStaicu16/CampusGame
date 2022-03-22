@@ -23,13 +23,13 @@
       ></gmap-marker>
     </gmap-map>
 
-    <input
-      onclick="https://www.google.com/"
-      value="Scan QR Code"
-      type="submit"
-      class="login-btn"
-      style="width: 20%; margin: 1%"
-    />
+    <router-link to="/scanqr" v-on:click="goTo('scanqr')"
+      ><input
+        value="Scan QR Code"
+        type="submit"
+        class="login-btn"
+        style="width: 20%; margin: 1%"
+    /></router-link>
   </div>
 </template>
 
