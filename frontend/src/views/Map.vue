@@ -10,11 +10,8 @@
     "
   >
     <h1 style="color: black">Map Page</h1>
-    <gmap-map
-      :center="center"
-      :zoom="19"
-      style="width: 800px; height: 400px; margin: 30px auto"
-    >
+
+    <gmap-map class="googlemaps" :center="center" :zoom="19">
       <gmap-marker
         :key="index"
         v-for="(m, index) in markers"
@@ -113,5 +110,52 @@ h1 {
 
 p a {
   color: white;
+}
+
+.googlemaps {
+  width: 50rem;
+  height: 25rem;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+}
+
+@media only screen and (min-width: 1200px) {
+  .googlemaps {
+    width: 50rem;
+    height: 25rem;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .googlemaps {
+    width: 30rem;
+    height: 15rem;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .googlemaps {
+    width: 20rem;
+    height: 10rem;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .googlemaps {
+    width: 10rem;
+    height: 5rem;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+  }
 }
 </style>
