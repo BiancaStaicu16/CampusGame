@@ -38,7 +38,7 @@ SECRET_KEY = "django-insecure--jo8g-w^a6qs)8c&#c2epv87np9uws_w5c7v!m3fg63tq2jii^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['biancastaicu.pythonanywhere.com']
 
 
 # Application definition
@@ -134,7 +134,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = "static/"
-STATIC_ROOT = "static/"
+STATIC_ROOT = "home/BiancaStaicu/CampusGame/static"
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "frontend/build/static")]
 
 
