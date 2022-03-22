@@ -1,129 +1,64 @@
 <template>
-
   <div id="app">
-      <img src="./assets/download.jpeg" id="mainimg">
-
-     <!--<qrcode-stream id="qrscan" @decode="onDecode" @init="onInit"></qrcode-stream>-->
-   <div class="login-page">
-
-      <div class="container">
-         <div class="row">
-            <div class="col-lg-4 col-md-6 col-sm-8 mx-auto">
-               <div v-if="!registerActive" class="card login" v-bind:class="{ error: emptyFields }">
-                  <h1>ExeTour</h1>
-                  <form class="form-group">
-                     <input v-model="emailLogin" type="email" class="form-control" placeholder="Email" required>
-                     <br><br><input v-model="passwordLogin" type="password" class="form-control" placeholder="Password" required>
-                     <br><br><input type="submit" class="btn" @click="doLogin">
-                    <br><br>
-                     <input type="checkbox" id="login" />
-                     <label><a href="url_for('gdpr_policy')">Read our GDPR policy</a></label>
-                     <br>
-                     <p><a href="url_for('gdpr_policy')">Campus Game | Terms and Conditions</a></p>
-                  </form>
-               </div>
-
-               <div v-if="!registerActive" class="card login" v-bind:class="{ error: emptyFields }">
-                  <h1>Sign Up</h1>
-                  <form class="form-group">
-                     <input v-model="emailReg" type="email" class="form-control" placeholder="Email" required>
-                     <br><br><input v-model="passwordReg" type="password" class="form-control" placeholder="Password" required>
-                     <br><br><input v-model="confirmReg" type="password" class="form-control" placeholder="Confirm Password" required>
-                     <br><br><input type="submit" class="btn btn-primary" @click="doRegister">
-                     <p>Already have an account? <a href="#" @click="registerActive = !registerActive, emptyFields = false">Sign in here</a>
-                     </p>
-                  </form>
-               </div>
-            </div>
-         </div>
-
-      </div>
-   </div>
-</div>
+    <router-view />
+    <!--Do not change -->
+    <div
+      v-if="
+        this.$route.name !== 'LoginPage' &&
+        this.$route.name !== 'RegisterPage' &&
+        this.$route.name !== 'ForgotPassword' &&
+        this.$route.name !== 'EnterNewPassword'
+      "
+      style="margin-bottom: 11vh"
+    >
+      <Navbar />
+    </div>
+  </div>
 </template>
-<!--<div id="app">
-  <h1>Login Page</h1>
-  <ul>
-    <li>
-      <login></login>
-    </li>
-  </ul>
-  </div>-->
+
 <script>
-
-import Login from './components/Login.vue'
-
+import Navbar from "./components/Navbar.vue";
+import GoogleMap from "./views/Feed.vue";
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    // eslint-disable-next-line vue/no-unused-components
-    Login
+    Navbar,
+    GoogleMap,
   },
-  methods: {
-    onDecode (url) {
-      window.location.href = url
-    },
-    onInit (promise) {
-      promise
-        .then(console.log)
-        .catch(console.error)
-    }
-  }
-}
+};
 </script>
 
-<style lang="css">
-
-* {
-  background-color:#2E5477;
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+<style>
+/* Do not change - ensures lower page content is visible above navbar */
+body {
+  min-height: 100vh;
+  height: 100%;
+  overflow: visible;
+  background: #2e5477;
+  margin-bottom: 11vh;
+}
+#app {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  border-color: transparent;
-}
-
-#mainimg {
-  width: 10%;
-  height: 10%;
-  padding-bottom: none;
-  border-radius: 10px;
-}
-
-#app {
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-
-}
-
-h1{
   color: white;
-  font-size: 300%;
-  font-weight:900;
+}
+.navbar-container {
+  margin-top: 200px;
+}
+.navigation-display {
+  color: #7e7e7e;
+  font-size: 12px;
+  position: absolute;
+  top: 10;
+  left: 10;
+  padding: 10px;
 }
 
-input.form-control, .btn {
-  width: 25%;
-  padding: 1%;
-  border-radius: 10px;
-  background-color: white;
+button {
+  cursor: pointer;
+  outline: none;
 }
-
-.btn {
-  width: 10%;
-  font-weight: bolder;
-
-}
-
-::placeholder {
-  color: black;
-  font-weight: bold;
-  font-size: 25px;
-  text-align: center;
-}
-
-#qrscan {
-  width:600px;
-}
-
 </style>
