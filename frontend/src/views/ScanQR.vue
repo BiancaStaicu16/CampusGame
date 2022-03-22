@@ -49,7 +49,7 @@ export default {
 };
 </script>
 -->
-<template>
+<template id="scanqr">
   <div
     style="
       width: 75%;
