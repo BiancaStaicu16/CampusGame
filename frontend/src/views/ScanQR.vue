@@ -1,75 +1,48 @@
-<!--<template>
-  <div class="bg-gray-50 px-8">
-    <p>{{ error }}</p>
-    <p>{{ decodedString }}</p>
-    <qrcode-stream @init="onInit" @decode="onDecode"></qrcode-stream>
-  </div>
+<template>
+    <div id="app">
+                <div class="card">
+                    <qrcode-stream @decode="onDecode" @init="onInit" />
+                </div>
+    </div>
 </template>
 
 <script>
-import { QrcodeStream } from "vue3-qrcode-reader";
+import { QrcodeStream } from 'vue-qrcode-reader'
 export default {
-  data() {
-    return {
-      error: "",
-      decodedString: "",
-    };
-  },
-  components: {
-    QrcodeStream,
-  },
+  name: 'app',
+  data() {},
+  components: { QrcodeStream },
   methods: {
-    async onInit(promise) {
+    async onDecode (result) {
+      window.location.replace(result)
+    },
+    async onInit (promise) {
       try {
-        //successfully initialized
+        await promise
       } catch (error) {
-        if (error.name === "NotAllowedError") {
-          this.error = "user denied camera access permisson";
-        } else if (error.name === "NotFoundError") {
-          this.error = "no suitable camera device installed";
-        } else if (error.name === "NotSupportedError") {
-          this.error = "page is not served over HTTPS (or localhost)";
-        } else if (error.name === "NotReadableError") {
-          this.error = "maybe camera is already in use";
-        } else if (error.name === "OverconstrainedError") {
-          this.error =
-            "did you requested the front camera although there is none?";
-        } else if (error.name === "StreamApiNotSupportedError") {
-          this.error = "browser seems to be lacking features";
+        if (error.name === 'NotAllowedError') {
+          this.alert = 'alert-danger'
+          this.status = "ERROR: you need to grant camera access permisson"
+        } else if (error.name === 'NotFoundError') {
+          this.alert = 'alert-danger'
+          this.status = "ERROR: no camera on this device"
+        } else if (error.name === 'NotSupportedError') {
+          this.alert = 'alert-danger'
+          this.status = "ERROR: secure context required (HTTPS, localhost)"
+        } else if (error.name === 'NotReadableError') {
+          this.alert = 'alert-danger'
+          this.status = "ERROR: is the camera already in use?"
+        } else if (error.name === 'OverconstrainedError') {
+          this.alert = 'alert-danger'
+          this.status = "ERROR: installed cameras are not suitable"
+        } else if (error.name === 'StreamApiNotSupportedError') {
+          this.alert = 'alert-danger'
+          this.status = "ERROR: Stream API is not supported in this browser"
         }
-      } finally {
-        //hide loading indicator
       }
-    },
-    onDecode(decodedString) {
-      this.decodedString = decodedString;
-      window.location.replace(decodedString);
-    },
-  },
-};
+    }
+  }
+}
 </script>
--->
-<template id="scanqr">
-  <div
-    style="
-      width: 75%;
-      height: 75%;
-      margin-left: auto;
-      background-color: white;
-      border-radius: 25px;
-    "
-  >
-    <h1 style="color: black">Scan QR Code Page</h1>
-  </div>
-</template>
 
 
-<style scoped>
-h1 {
-  left: 0;
-  font-size: 2em;
-}
-
-p a {
-  color: white;
-}
