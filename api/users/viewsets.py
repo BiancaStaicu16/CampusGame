@@ -206,3 +206,11 @@ class UserViewSet(viewsets.ModelViewSet):
         except DRFValidationError:
             return Response({"detail": "Code is not correct."}, status=401)
         return Response({"detail": "Password changed."}, status=200)
+
+    @action(detail=False, methods=["GET"], url_path="leaderboard")
+    def leaderboard(self, request):
+        """
+        The 10 users with the highest scores in the game.
+        """
+        serializer = UserGetSerializer(User.objects.order_by("score")[:10], many=True)
+        return Response(serializer.data, status=200)
