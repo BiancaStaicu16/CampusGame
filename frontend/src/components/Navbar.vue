@@ -198,6 +198,11 @@ export default {
   text-align: center;
 }
 
+
+p:hover {
+  cursor: pointer;
+}
+
 .clearfix::after {
   content: "";
   clear: both;
