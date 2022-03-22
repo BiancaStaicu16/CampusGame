@@ -22,11 +22,9 @@
       </div>
       <br />
       <div class="input">
-        <input v-model="firstName" placeholder="First Name" type="text" />
+        <input v-model="firstName" placeholder="Full Name" type="text" />
       </div>
-      <div class="input">
-        <input v-model="lastName" placeholder="Last Name" type="text" />
-      </div>
+
       <div class="input">
         <input v-model="username" placeholder="Username" type="text" />
       </div>

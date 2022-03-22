@@ -38,31 +38,23 @@
       </div>
     </router-link>
 
-    <router-link
-      class="nav-link"
-      to="/communities"
-      v-on:click="goTo('communities')"
-    >
-      <div
-        id="communities"
-        style="color: white"
-        v-on:click="goTo('communities')"
-      >
+    <router-link class="nav-link" to="/scanqr" v-on:click="goTo('scanqr')">
+      <div id="scanqr" style="color: white" v-on:click="goTo('scanqr')">
         <p
           class="nav-icon"
           style="display: inline-block; font-size: 75%; padding: 5%"
         >
           <font-awesome-icon
-            :icon="['fas', 'trophy']"
+            :icon="['fas', 'search']"
             style="display: inline-block"
           />
-          Community
+          Scan QR Codes
         </p>
       </div>
     </router-link>
 
-    <router-link class="nav-link" to="/profile" v-on:click="goTo('profile')">
-      <div id="profile" style="color: white" v-on:click="goTo('profile')">
+    <router-link class="nav-link" to="/mycards" v-on:click="goTo('map')">
+      <div id="map" style="color: white" v-on:click="goTo('map')">
         <p
           class="nav-icon"
           style="display: inline-block; font-size: 75%; padding: 5%"
@@ -124,7 +116,7 @@ export default {
   name: "Navbar",
   data: function () {
     return {
-      pages: ["feed", "communities", "profile", "leaderboard", "settings"],
+      pages: ["feed", "scanqr", "map", "leaderboard", "settings"],
     };
   },
   mounted() {
@@ -191,16 +183,15 @@ export default {
   text-align: center;
 }
 
+p:hover {
+  cursor: pointer;
+}
+
 .nav-icon {
   font-size: 2vh;
   margin-top: 0;
   margin-bottom: 1vh;
   text-align: center;
-}
-
-
-p:hover {
-  cursor: pointer;
 }
 
 .clearfix::after {

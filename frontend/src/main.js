@@ -5,6 +5,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import router from "./router/router.js";
 import VueGeolocation from 'vue-browser-geolocation'
 
+
 Vue.config.productionTip = false
 Vue.use(VueGeolocation)
 

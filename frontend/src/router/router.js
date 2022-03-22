@@ -1,9 +1,9 @@
 import ChangePassword from "@/views/ChangePassword";
-import Community from "../views/Community.vue";
+import ScanQR from "../views/ScanQR.vue";
 import EnterNewPassword from "../views/EnterNewPassword";
-import Feed from "../views/Feed.vue";
+import Map from "../views/Map.vue";
 import ForgotPassword from "@/views/ForgotPassword";
-import Profile from "../views/Profile.vue"
+import MyCards from "../views/MyCards.vue"
 import Leaderboard from "../views/Leaderboard.vue";
 import LoginPage from "../views/LoginPage.vue";
 import NotFound from "@/views/NotFound";
@@ -17,8 +17,8 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    name: "Feed",
-    component: Feed,
+    name: "Map",
+    component: Map,
   },
   {
     path: "/login",
@@ -47,14 +47,14 @@ const routes = [
     component: Leaderboard,
   },
   {
-    path: "/communities",
-    name: "Community",
-    component: Community,
+    path: "/scanqr",
+    name: "ScanQR",
+    component: ScanQR,
   },
   {
-    path: "/profile",
-    name: "Profile",
-    component: Profile,
+    path: "/mycards",
+    name: "MyCards",
+    component: MyCards,
   },
   {
     path: "/settings",

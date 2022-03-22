@@ -18,7 +18,7 @@
 
 <script>
 import Navbar from "./components/Navbar.vue";
-import GoogleMap from "./views/Feed.vue";
+import GoogleMap from "./views/Map.vue";
 export default {
   name: "App",
   components: {

@@ -5,11 +5,40 @@
   -moz-osx-font-smoothing: grayscale;
   border-color: transparent;
 }
+template {
+  background-color: white;
+}
+
+#nav {
+  font-size: 4vh;
+  font-family: "Trebuchet MS";
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 11vh;
+  background-color: #161626;
+  color:black;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  border-radius: 25px 25px 0 0;
+}
+
+.nav-link{
+    text-decoration: none !important;
+    text-align: center;
+}
 
 
+.nav-icon {
+  font-size: 2vh;
+  margin-top: 0;
+  margin-bottom: 1vh;
+  text-align: center;
+}
 
-
-h1{
+h1 {
   color: white;
   font-size: 300%;
   font-weight:900;
@@ -20,6 +49,19 @@ h1{
   font-style: none; 
   text-decoration: underline;
   font-weight:normal;
+}
+
+.color-bar {
+  height: 48px;
+  width: 15px;
+  border-radius: 10px 0px 0 10px;
+  position: absolute;
+}
+
+#back {
+  text-align: left;
+  color: white;
+  cursor: pointer;
 }
 
 ::placeholder {
@@ -39,6 +81,15 @@ h1{
 .title {
   font: bold;
 }
+
+
+.forgot-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+}
+
 
 .login-form {
   display: flex;
@@ -79,7 +130,6 @@ input::placeholder {
   margin-bottom: 3px;
 }
 
-
 .login-btn {
   background: white;
   width: 80px;
@@ -101,6 +151,11 @@ input::placeholder {
   color: red;
   font-size: 14px;
 }
+
+input:hover {
+  cursor: pointer;
+}
+
 #mainimg {
   width: 20%;
   height: 20%;
@@ -123,15 +178,12 @@ input::placeholder {
   }
 }
 
-
 .register-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin: auto;
 }
-
-
 
 .terms {
   display: flex;
@@ -154,7 +206,6 @@ input::placeholder {
   left: calc(50vw - 80px);
 }
 
-
 .error {
   color: red;
 }
@@ -164,6 +215,11 @@ input::placeholder {
   color: red;
 }
 
+.pass-requirements {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .fulfilled ul {
   color: green;
 }
@@ -171,6 +227,7 @@ input::placeholder {
 .TC-popup {
   position: absolute;
 }
+
 
 .tc-link {
   cursor: pointer;
