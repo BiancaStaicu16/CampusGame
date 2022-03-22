@@ -76,7 +76,7 @@ npm install --save vue-geolocation-api
 
 Next, install the QR Code Dependency 
 ```
-npm install vue3-qrcode-reader
+npm install --save vue-qrcode-reader
 ```
 
 Now to build the frontend, there are two ways:
