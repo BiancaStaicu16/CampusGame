@@ -1,14 +1,18 @@
 <template>
   <div>
-    <h1>The page you are looking for was not found!</h1>
+    <h1>Welcome to the ExeTour Game!</h1>
     <p><a href="/">Go home?</a></p>
   </div>
 </template>
 
 <script>
 export default {
-  name: "NotFound"
-}
+  name: "NotFound",
+
+  methods: {
+    headers: { Authorization: this.$authToken },
+  },
+};
 </script>
 
 <style scoped>
@@ -21,5 +25,4 @@ h1 {
 p a {
   color: white;
 }
-
 </style>
