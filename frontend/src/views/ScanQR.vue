@@ -15,8 +15,6 @@ export default {
   components: { QrcodeStream },
   methods: {
     async onDecode (result) {
-      var audio = new Audio(require('../assets/unlock.mp3'))
-      audio.play()
       window.location.replace(result)
     },
     async onInit (promise) {
