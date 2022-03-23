@@ -3,7 +3,14 @@
     <h1>My Cards</h1>
     <div class="page-content">
       <div class="card">
-        <div class="content"></div>
+        <div class="content">
+          {% for card in cards %}
+          <h2 class="title">{{ card[cardName] }}</h2>
+          <p class="copy">
+            {{ card[cardValue] }}
+          </p>
+          {% end for %}
+        </div>
       </div>
     </div>
   </div>
@@ -15,9 +22,10 @@ export default {
   name: "Profile",
   data() {
     return {
-      category: {
-        cards: [[]],
-      },
+      cardArray: [],
+      cardName: [],
+      cardValue: [],
+      cardPicture: [],
     };
   },
   mounted() {
@@ -26,13 +34,14 @@ export default {
   methods: {
     getCards() {
       axios
-        .get("/users/me")
+        .get("users/me")
         .then((response) => {
-          cards = this.cards:{}
-          {% for card in cards %}
-              <h2 class="title">{{ card.title }}</h2>
-            <p class="copy">{{card.value}}</p>
-          {% end for %}
+          this.cardArray = response.data;
+          for (let i = 0; i < cardArray.length; i++) {
+            this.cardName[i] = cardArray[i].getName();
+            this.cardValue[i] = cardArray[i].getValue();
+            this.cardPicture[i] = cardArray[i].getPicture();
+          }
         })
         .catch((error) => {
           console.log(error);
@@ -41,6 +50,7 @@ export default {
   },
 };
 </script>
+
 
 <style scoped>
 h1 {
