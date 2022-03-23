@@ -8,10 +8,6 @@
 <script>
 export default {
   name: "NotFound",
-
-  methods: {
-    headers: { Authorization: this.$authToken },
-  },
 };
 </script>
 
