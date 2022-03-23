@@ -108,9 +108,10 @@ export default {
           email: this.email,
           password: this.password,
         })
-        .then(() => {
-          this.failedLogin = false;
+        .then((response) => {
+          localStorage.authToken = JSON.stringify(response.data.token);
           this.$router.push("/");
+          this.failedLogin = false;
         })
         .catch((error) => {
           console.error(error);
@@ -123,3 +124,4 @@ export default {
 
 <style scoped src="@/assets/styling.css">
 </style>
+
