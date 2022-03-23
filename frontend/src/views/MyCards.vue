@@ -14,15 +14,25 @@
 
 <script>
 import axios from "axios";
-
 export default {
+  name: "Profile",
+  data() {
+    return {
+      category: {
+        cards: [[]],
+      },
+    };
+  },
+  mounted() {
+    this.postCards();
+  },
   // Sends card ID from scanned QR code to backend
   methods: {
-    getCard() {
+    postCard() {
       axios
         .post("api/usercards/users_cards/", {
           user: this.user,
-          card: this.card,
+          card: this.card
         })
         .catch((error) => {
           console.log(error);
