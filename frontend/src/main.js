@@ -5,8 +5,8 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import router from "./router/router.js";
 import VueGeolocation from 'vue-browser-geolocation'
 
-
 Vue.config.productionTip = false
+Vue.prototype.$authToken = localStorage.authToken ? JSON.parse(localStorage.authToken) : "none";
 Vue.use(VueGeolocation)
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);
@@ -106,8 +106,10 @@ Vue.use(VueGoogleMaps, {
 //Clipboard
 import VueClipboard from "vue-clipboard2";
 VueClipboard.config.autoSetContainer = true;
+
 Vue.use(VueClipboard);
 new Vue({
   router,
   render: (h) => h(App),
 }).$mount("#app");
+
