@@ -23,7 +23,7 @@
       </h2>
     </div>
 
-    <router-link class="nav-link" to="/" v-on:click="goTo('feed')">
+    <router-link class="nav-link" to="/dashboard" v-on:click="goTo('feed')">
       <div id="feed" style="color: white" v-on:click="goTo('feed')">
         <p
           class="nav-icon"
