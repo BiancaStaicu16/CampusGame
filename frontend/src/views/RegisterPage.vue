@@ -22,7 +22,7 @@
       </div>
       <br />
       <div class="input">
-        <input v-model="firstName" placeholder="Full Name" type="text" />
+        <input v-model="name" placeholder="Full Name" type="text" />
       </div>
 
       <div class="input">
@@ -83,8 +83,7 @@ export default {
   data() {
     return {
       showTC: false,
-      firstName: "",
-      lastName: "",
+      name: "",
       username: "",
       password: "",
       passwordConfirmation: "",
@@ -162,8 +161,7 @@ export default {
           email: this.email,
           username: this.username,
           password: this.password,
-          first_name: this.firstName,
-          last_name: this.lastName,
+          name: this.name,
           password_repeat: this.passwordConfirmation,
         })
         .then(() => {
@@ -212,8 +210,7 @@ export default {
     },
     validateFields() {
       return !!(
-        this.firstName &&
-        this.lastName &&
+        this.name &&
         this.password &&
         this.passwordConfirmation &&
         this.email
