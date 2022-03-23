@@ -3,10 +3,7 @@
     <h1>My Cards</h1>
     <div class="page-content">
       <div class="card">
-        <div class="content">
-          <h2 class="title">{{ title }}</h2>
-          <p class="copy">{{ value }}</p>
-        </div>
+        <div class="content"></div>
       </div>
     </div>
   </div>
@@ -24,15 +21,18 @@ export default {
     };
   },
   mounted() {
-    this.postCards();
+    this.getCards();
   },
-  // Sends card ID from scanned QR code to backend
   methods: {
-    postCard() {
+    getCards() {
       axios
-        .post("api/usercards/users_cards/", {
-          user: this.user,
-          card: this.card
+        .get("/users/me")
+        .then((response) => {
+          cards = this.cards:{}
+          {% for card in cards %}
+              <h2 class="title">{{ card.title }}</h2>
+            <p class="copy">{{card.value}}</p>
+          {% end for %}
         })
         .catch((error) => {
           console.log(error);
