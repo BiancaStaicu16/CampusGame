@@ -167,7 +167,7 @@ export default {
         .then(() => {
           this.errMessage = "";
           this.termErrMessage = "";
-          this.$router.push({ name: "Feed" });
+          this.$router.push({ name: "Map" });
         })
         .catch((error) => {
           console.error(error);

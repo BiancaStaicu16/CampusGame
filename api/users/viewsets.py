@@ -74,7 +74,7 @@ class UserViewSet(viewsets.ModelViewSet):
         """
         Login function to authenticate users with either username or email.
         """
-        username = request.data.get("username")
+        username = request.data.get("email")
         password = request.data.get("password")
         if not username or not password:
             return Response({"detail": "Bad fields."}, status=400)

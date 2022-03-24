@@ -86,37 +86,25 @@ export default {
       termErrMessage: "",
     };
   },
+  methods: {
+    loginUser() {
+      axios.post("/api/users/login/", {email: this.email, password: this.password})
+          .then((response) => {
+            localStorage.authToken = JSON.stringify(response.data.token);
+            this.$router.push("/dashboard");
+            location.reload();  // To refresh authToken after redirect
+          })
+          .catch((error) => {
+            console.error(error);
+            this.error = true;
+          })
+    }
+  },
   watch: {
     isTermsAgreed: function () {
       if (this.termErrMessage !== "" && this.isTermsAgreed) {
         this.termErrMessage = "";
       }
-    },
-  },
-  methods: {
-    navigate(path) {
-      this.$router.push(path);
-    },
-
-    loginUser() {
-      if (!this.isTermsAgreed) {
-        this.termErrMessage = "You must agree to the terms to register";
-        return false;
-      }
-      axios
-        .post("/api/users/login/", {
-          email: this.email,
-          password: this.password,
-        })
-        .then((response) => {
-          localStorage.authToken = JSON.stringify(response.data.token);
-          this.$router.push("/");
-          this.failedLogin = false;
-        })
-        .catch((error) => {
-          console.error(error);
-          this.failedLogin = true;
-        });
     },
   },
 };

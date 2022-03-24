@@ -14,14 +14,22 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.shortcuts import render
+from django.urls import path, include, re_path
 from djangovue import views, settings
 from django.conf.urls.static import static
+from django.http import HttpResponse
+
 
 vue_urls = [
+    path("", lambda _: HttpResponse("", status=200)),
     path("", views.frontend),
-    path("another-path/", views.frontend),
+    re_path(
+            r"^(?:.*/|)",
+            lambda request: HttpResponse(render(request, "vue_index.html")),
+            ),
 ]
+
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/", include("api.urls")),
