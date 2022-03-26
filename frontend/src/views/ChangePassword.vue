@@ -3,7 +3,6 @@
 <template>
   <div class="container">
     <p id="back" @click="$router.go(-1)">
-      <font-awesome-icon :icon="['fas', 'arrow-left']" />
       Back
     </p>
     <div class="register-form">
@@ -148,7 +147,6 @@ export default {
         this.nineChars = false;
         return false;
       }
-      // Check for white space
       if (/\s/g.test(this.password)) {
         this.noSpaces = false;
         return false;
