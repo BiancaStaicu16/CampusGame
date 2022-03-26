@@ -21,6 +21,7 @@ Vue.config.productionTip = false;
 var VueCookie = require("vue-cookie");
 Vue.use(VueCookie);
 
+// Geo-components for Map 
 import * as VueGoogleMaps from 'vue2-google-maps'
 Vue.use(VueGoogleMaps, {
   load: {
