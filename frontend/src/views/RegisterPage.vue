@@ -169,7 +169,6 @@ export default {
         this.nineChars = false;
         return false;
       }
-      // Check for white space
       if (/\s/g.test(this.password)) {
         this.noSpaces = false;
         return false;
