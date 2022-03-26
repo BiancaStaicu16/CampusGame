@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <router-view />
-    <!--Do not change -->
     <div
       v-if="
         this.$route.name !== 'LoginPage' &&
