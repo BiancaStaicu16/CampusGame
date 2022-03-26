@@ -1,7 +1,6 @@
 <template>
   <div class="container">
     <p id="back" @click.prevent="goBack()">
-      <font-awesome-icon :icon="['fas', 'arrow-left']" />
       Back
     </p>
     <div class="forgot-form">
@@ -37,8 +36,7 @@
           />
         </div>
         <div class="details">
-          Unfortunately if you are unable to access your email account we will
-          not be able to reset your password.
+          Your password cannnot be reset if you do not know your login details.
         </div>
         <br />
         <button class="login-btn" type="submit" @click.stop="submitEmail">
@@ -46,8 +44,7 @@
         </button>
       </div>
       <div v-else>
-        The reset link has been sent to your email address, this link will
-        expire in 30 minutes.
+        We will send you a reset email to your entered address. 
       </div>
       <br />
     </div>
