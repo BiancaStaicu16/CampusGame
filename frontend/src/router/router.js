@@ -6,7 +6,7 @@ import ForgotPassword from "@/views/ForgotPassword";
 import MyCards from "../views/MyCards.vue"
 import Leaderboard from "../views/Leaderboard.vue";
 import LoginPage from "../views/LoginPage.vue";
-import NotFound from "@/views/NotFound";
+import Home from "@/views/Home";
 import RegisterPage from "../views/RegisterPage.vue";
 import Settings from "@/views/Settings";
 import Vue from "vue";
@@ -64,8 +64,8 @@ const routes = [
 
   {
     path: "*",
-    name: "NotFound",
-    component: NotFound,
+    name: "Home",
+    component: Home,
   },
   {
     path: "/changePassword",
