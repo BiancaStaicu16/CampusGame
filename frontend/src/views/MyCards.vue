@@ -1,3 +1,5 @@
+// This page should show the cards that the user has collected 
+
 <template>
   <div class="page-main">
     <h1>My Cards</h1>
