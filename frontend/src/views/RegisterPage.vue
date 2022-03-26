@@ -15,9 +15,6 @@
         <ul>
           <li :class="{ fulfilled: lowercase }">Atleast 1 lower case</li>
           <li :class="{ fulfilled: uppercase }">Atleast 1 upper case</li>
-          <li :class="{ fulfilled: containsNumber }">A number</li>
-          <li :class="{ fulfilled: noSpaces }">No spaces</li>
-          <li :class="{ fulfilled: nineChars }">At least 9 characters long</li>
         </ul>
       </div>
       <br />
@@ -123,10 +120,7 @@ export default {
         this.errMessage = "";
       }
     },
-    /**
-     * Clear any error messages related to the agreed terms checkbox
-     * if the user agrees with the terms
-     */
+
     isTermsAgreed: function () {
       if (this.termErrMessage !== "" && this.isTermsAgreed) {
         this.termErrMessage = "";
