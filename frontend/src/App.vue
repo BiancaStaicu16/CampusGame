@@ -28,7 +28,6 @@ export default {
 </script>
 
 <style>
-/* Do not change - ensures lower page content is visible above navbar */
 body {
   min-height: 100vh;
   height: 100%;
