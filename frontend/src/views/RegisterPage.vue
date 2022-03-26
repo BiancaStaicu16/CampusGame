@@ -1,3 +1,5 @@
+// Edit this to make it more precise with more conditions 
+
 <template>
   <div class="container">
     <div class="register-form">
@@ -102,13 +104,7 @@ export default {
   watch: {
 
     password: function () {
-      // Check 9 character password
       this.nineChars = this.password.length >= 9;
-      // Check for white space
-      this.noSpaces = !/\s/g.test(this.password) ? true : false;
-      this.lowercase = /[a-z]/.test(this.password) ? true : false;
-      this.uppercase = /[A-Z]/.test(this.password) ? true : false;
-      this.containsNumber = /[0-9]/.test(this.password) ? true : false;
     },
     passwordConfirmation: function () {
       if (
