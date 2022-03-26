@@ -1,3 +1,5 @@
+// Edit this to include more conditions (before forked to repository) 
+
 <template>
   <div class="container">
     <p id="back" @click.prevent="goBack()">
@@ -80,7 +82,7 @@ export default {
         .catch((error) => {
           this.invalidEmail = true;
           this.errorMessage =
-            "We couldn't find any account with that email address";
+            "This email ID does not exist";
           console.error(error.response.data);
         });
     },
