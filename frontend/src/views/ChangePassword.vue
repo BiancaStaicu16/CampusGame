@@ -76,10 +76,7 @@ export default {
     };
   },
   watch: {
-    /*
-     * Provide an error message to show the user that the password
-     * and their password confirmation do not match.
-     **/
+
     password: function () {
       // Check 9 character password
       this.nineChars = this.password.length >= 9;
@@ -99,10 +96,7 @@ export default {
         this.errMessage = "";
       }
     },
-    /**
-     * Clear any error messages related to the agreed terms checkbox
-     * if the user agrees with the terms
-     */
+
     isTermsAgreed: function () {
       if (this.termErrMessage !== "" && this.isTermsAgreed) {
         this.termErrMessage = "";
