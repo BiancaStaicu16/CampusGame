@@ -1,3 +1,5 @@
+// This can be edited (to include more conditions) 
+
 <template>
   <div class="container">
     <p id="back" @click="$router.go(-1)">
