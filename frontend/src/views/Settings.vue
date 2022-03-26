@@ -27,13 +27,6 @@
       <TermsAndConditionsPopup v-if="showTC" />
     </div>
 
-    <!-- <div style="position: relative; top: -50px">
-      <label class="switch" v-if="hideLeaderboard !== null">
-        <input type="checkbox" v-model="hideLeaderboard" />
-        <span class="slider round"></span>
-      </label>
-    </div>-->
-
     <div class="small-sign-out" @click="changePassword()">
       <p>Change your password</p>
     </div>
