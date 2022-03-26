@@ -1,7 +1,6 @@
 <template>
   <div>
     <h1>Welcome to the ExeTour Game!</h1>
-    <p><a href="/">Go home?</a></p>
   </div>
 </template>
 
