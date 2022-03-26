@@ -63,7 +63,6 @@ export default {
       password: "",
       passwordConfirmation: "",
 
-      // Pass requirements
       showRequirements: false,
       lowercase: false,
       uppercase: false,
