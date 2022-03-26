@@ -1,3 +1,5 @@
+// Once Card Functionality is built (This can be used to redirect user from the ScanQR Page to the Leaderboard and the My Cards Profile
+
 import ChangePassword from "@/views/ChangePassword";
 import ScanQR from "../views/ScanQR.vue";
 import EnterNewPassword from "../views/EnterNewPassword";
