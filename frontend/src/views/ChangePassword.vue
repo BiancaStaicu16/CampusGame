@@ -20,9 +20,6 @@
         <ul>
           <li :class="{ fulfilled: lowercase }">At least 1 lower case</li>
           <li :class="{ fulfilled: uppercase }">At least 1 upper case</li>
-          <li :class="{ fulfilled: containsNumber }">A number</li>
-          <li :class="{ fulfilled: noSpaces }">No spaces</li>
-          <li :class="{ fulfilled: nineChars }">At least 9 characters long</li>
         </ul>
       </div>
 
