@@ -1,6 +1,8 @@
 // This can be edited (to include more conditions) 
 // Needs to be properly connected to API
 
+//Credit to tutorials for aiding  - Coding with Justin, Scalable Scripts, 4ums 
+
 <template>
   <div class="container">
     <p id="back" @click="$router.go(-1)">
