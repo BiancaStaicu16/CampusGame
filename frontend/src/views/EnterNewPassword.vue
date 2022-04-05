@@ -1,3 +1,6 @@
+//Credit to tutorials for aiding  - Coding with Justin, Traversy Media, 4ums 
+
+
 <template>
   <div class="container">
     <p id="back" @click.prevent="goBack()">
