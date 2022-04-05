@@ -1,5 +1,8 @@
 // Edit this to include more conditions (before forked to repository) 
 
+//Credit to tutorials for aiding  - Coding with Justin, 4ums 
+
+
 <template>
   <div class="container">
     <p id="back" @click.prevent="goBack()">
