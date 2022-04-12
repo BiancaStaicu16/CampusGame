@@ -22,7 +22,6 @@ Some feature of the Campus Game offer:
 
 ## 🤝 Workspaces
 
-**NOTE:** Send Apurva your trello account name and google email to add you to it.
 
 [Trello board for tasks](https://trello.com/b/jl8CAvTH/kanban-board-group-software-dev)
 
